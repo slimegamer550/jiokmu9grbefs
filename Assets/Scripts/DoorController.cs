@@ -59,6 +59,6 @@ public class DoorController : MonoBehaviour
     public void CloseDoor()
     {
         state = DoorState.Close;
-        isMoving = false;
+        isMoving = true;
     }
 }

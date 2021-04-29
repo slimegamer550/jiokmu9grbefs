@@ -21,6 +21,7 @@ public class playerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     private bool isGrounded;
+    private bool doubleJump;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,10 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if (isGrounded)
+        {
+            doubleJump = false;
+        }
 
         float xAxis = Input.GetAxis("Horizontal");
         float zAxis = Input.GetAxis("Vertical");
@@ -52,6 +57,16 @@ public class playerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetButtonDown("Jump") && !isGrounded && !doubleJump)
+        {
+            doubleJump = true;
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
