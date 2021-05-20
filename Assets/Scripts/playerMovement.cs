@@ -23,6 +23,8 @@ public class playerMovement : MonoBehaviour
     private bool isGrounded;
     private bool doubleJump;
 
+    public SceneManagerScript sms;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,11 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            sms.exitGame();
+        }
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded)
         {

@@ -562,6 +562,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  sms: {fileID: 918456962}
 --- !u!1 &193723134
 GameObject:
   m_ObjectHideFlags: 0

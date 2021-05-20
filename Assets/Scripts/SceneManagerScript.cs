@@ -25,4 +25,9 @@ public class SceneManagerScript : MonoBehaviour
         }
     }
 
+    public void exitGame()
+    {
+        Application.Quit();
+    }
+
 }
